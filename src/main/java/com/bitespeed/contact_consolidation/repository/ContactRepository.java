@@ -9,4 +9,5 @@ import java.util.List;
 @Repository
 public interface ContactRepository extends JpaRepository<Contact, Integer> {
     List<Contact> findByEmailOrPhoneNumber(String email, String phoneNumber);
+    Contact findByEmailAndPhoneNumber(String email, String phoneNumber);
 }

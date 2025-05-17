@@ -1,9 +1,6 @@
 package com.bitespeed.contact_consolidation.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,18 +11,31 @@ import java.time.LocalDateTime;
 @NoArgsConstructor          //creates a no-argument constructor
 @AllArgsConstructor         //creates a constructor with all fields
 @Entity                     //it maps this class as table Contact in db
+@Table(name = "contact")
 public class Contact {
 
     @Id                     //marks primary key for the table Contact
     @GeneratedValue(strategy = GenerationType.IDENTITY)//autogenerates value for id
-    private long id;
+    private int id;
 
+    @Column(name = "phone_number")
     private String phoneNumber;
+
     private String email;
+
+    @Column(name = "linked_id")
     private int linkedId;
+
+    @Column(name = "link_precedence")
     private LinkPrecedence linkPrecedence;
-    private LocalDateTime createdAt;
+
+    @Column(name = "created_at")
+    private LocalDateTime createdAt = LocalDateTime.now();
+
+    @Column(name = "deleted_at")
     private LocalDateTime deletedAt;
-    private LocalDateTime updatedAt;
+
+    @Column(name = "updated_at")
+    private LocalDateTime updatedAt = LocalDateTime.now();
 
 }
