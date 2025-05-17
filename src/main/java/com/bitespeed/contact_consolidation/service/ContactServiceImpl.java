@@ -2,6 +2,7 @@ package com.bitespeed.contact_consolidation.service;
 
 import com.bitespeed.contact_consolidation.dto.ContactResponseDTO;
 import com.bitespeed.contact_consolidation.dto.IdentifyResponse;
+import com.bitespeed.contact_consolidation.exception.InvalidRequestException;
 import com.bitespeed.contact_consolidation.model.Contact;
 import com.bitespeed.contact_consolidation.model.LinkPrecedence;
 import com.bitespeed.contact_consolidation.repository.ContactRepository;
@@ -19,6 +20,9 @@ public class ContactServiceImpl implements IContactService {
 
     @Override
     public IdentifyResponse identify(String email, String phoneNumber) {
+        if (email == null && phoneNumber == null) {
+            throw new InvalidRequestException("At least one of email or phoneNumber must be provided");
+        }
         List<Contact> matchingContacts = contactRepository.findByEmailOrPhoneNumber(email, phoneNumber);
         Contact savedContact;
         Contact primaryContact = null;
