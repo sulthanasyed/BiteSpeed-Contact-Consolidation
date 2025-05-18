@@ -20,7 +20,7 @@ public class ContactServiceImpl implements IContactService {
 
     @Override
     public IdentifyResponse identify(String email, String phoneNumber) {
-        if (email == null && phoneNumber == null) {
+        if ((email == null || email == "") && (phoneNumber == null || phoneNumber == "")) {
             throw new InvalidRequestException("At least one of email or phoneNumber must be provided");
         }
         List<Contact> matchingContacts = contactRepository.findByEmailOrPhoneNumber(email, phoneNumber);
@@ -61,7 +61,7 @@ public class ContactServiceImpl implements IContactService {
         contactRepository.saveAll(contacts);
     }
 
-    private Contact createContact(String email, String phoneNumber, LinkPrecedence precedence, Integer linkedId) {
+    private Contact createContact(String email, String phoneNumber, LinkPrecedence precedence, long linkedId) {
         Contact contact = new Contact();
         contact.setEmail(email);
         contact.setPhoneNumber(phoneNumber);
@@ -73,7 +73,7 @@ public class ContactServiceImpl implements IContactService {
     private IdentifyResponse generateResponse(Contact primaryContact, List<Contact> allRelatedContacts) {
         Set<String> emails = new LinkedHashSet<>();
         Set<String> phoneNumbers = new LinkedHashSet<>();
-        List<Integer> secondaryIds = new ArrayList<>();
+        List<Long> secondaryIds = new ArrayList<>();
 
         for (Contact contact : allRelatedContacts) {
             if (contact.getEmail() != null)

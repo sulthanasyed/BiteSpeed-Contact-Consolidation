@@ -9,11 +9,11 @@ import java.util.List;
 @AllArgsConstructor
 public class ContactResponseDTO {
 
-    private int primaryContactId;
+    private long primaryContactId;
 
     private List<String> emails;
 
     private List<String> phoneNumbers;
 
-    private List<Integer> secondaryContactIds;
+    private List<Long> secondaryContactIds;
 }

@@ -16,7 +16,7 @@ public class Contact {
 
     @Id                     //marks primary key for the table Contact
     @GeneratedValue(strategy = GenerationType.IDENTITY)//autogenerates value for id
-    private int id;
+    private long id;
 
     @Column(name = "phone_number")
     private String phoneNumber;
@@ -24,7 +24,7 @@ public class Contact {
     private String email;
 
     @Column(name = "linked_id")
-    private int linkedId;
+    private long linkedId;
 
     @Column(name = "link_precedence")
     private LinkPrecedence linkPrecedence;
