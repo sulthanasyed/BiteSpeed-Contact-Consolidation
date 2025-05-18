@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ContactConsolidationApplication {
+public class IdentityReconciliationApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ContactConsolidationApplication.class, args);
+		SpringApplication.run(IdentityReconciliationApplication.class, args);
 	}
 
 }

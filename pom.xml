@@ -9,10 +9,11 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.bitespeed</groupId>
-	<artifactId>contact-consolidation</artifactId>
+	<artifactId>identity-reconciliation</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Contact Consolidation</name>
-	<description>Contact Consolidation of BiteSpeed</description>
+	<name>identity-reconciliation</name>
+	<description>Bitespeed Identity Reconciliation - A Spring Boot backend project for handling identity reconciliation based on email and phone number inputs.
+		It manages primary and secondary contacts using PostgreSQL and is ready to deploy on Render.com.</description>
 	<url/>
 	<licenses>
 		<license/>
@@ -40,8 +41,8 @@
 		</dependency>
 
 		<dependency>
-			<groupId>com.mysql</groupId>
-			<artifactId>mysql-connector-j</artifactId>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
 			<scope>runtime</scope>
 		</dependency>
 		<dependency>
